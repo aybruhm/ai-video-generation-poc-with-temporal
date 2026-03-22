@@ -1,7 +1,8 @@
-from core.temporal.types import GenerateVideoDTO
-
-import fal_client
+from fal_client import AsyncClient
 from temporalio import activity
+
+from core.temporal.types import GenerateVideoDTO
+from utils.env_utils import env
 
 
 @activity.defn
@@ -18,7 +19,11 @@ async def generate_video(input: GenerateVideoDTO) -> str:
     # Critical for long-running generations (prevents timeout-based retry storms)
     activity.heartbeat("submitted_to_falai")
 
-    result = await fal_client.run_async(
+    if not env.FALAI_API_KEY:
+        raise ValueError("FALAI_API_KEY environment variable not set")
+
+    fal_client = AsyncClient(key=env.FALAI_API_KEY)
+    result = await fal_client.run(
         input.model,
         arguments={
             "prompt": input.prompt,
