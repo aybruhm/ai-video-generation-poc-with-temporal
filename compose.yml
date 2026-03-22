@@ -1,0 +1,83 @@
+services:
+    api:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        container_name: video_generation_poc_api
+        ports:
+            - "1459:8001"
+        volumes:
+            - ./:/app
+        labels:
+            healme: true
+        restart: always
+        env_file:
+            - .env
+        depends_on:
+            - worker
+        environment:
+            - TEMPORAL_TARGET_HOST=temporal:7233
+        command:
+            [
+                "python",
+                "-m",
+                "uvicorn",
+                "main:app",
+                "--host",
+                "0.0.0.0",
+                "--port",
+                "8001",
+                "--reload",
+            ]
+        healthcheck:
+            test:
+                [
+                    "CMD",
+                    "/opt/python/bin/python",
+                    "-c",
+                    "import urllib.request; r=urllib.request.urlopen('http://localhost:8001/api/health', timeout=5); exit(0 if r.status==200 else 1)",
+                ]
+            interval: 30s
+            timeout: 10s
+            retries: 3
+            start_period: 60s
+
+    worker:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        container_name: video_generation_poc_worker
+        command: python -c "import asyncio; from core.temporal.worker import run_worker; asyncio.run(run_worker())"
+        volumes:
+            - ./:/app
+        env_file:
+            - .env
+        environment:
+            - TEMPORAL_TARGET_HOST=temporal:7233
+        depends_on:
+            - temporal
+        healthcheck:
+            test:
+                [
+                    "CMD",
+                    "python",
+                    "-c",
+                    "import asyncio; from core.temporal.worker import test_worker_connection; asyncio.run(test_worker_connection())",
+                ]
+            interval: 30s
+            timeout: 10s
+            retries: 3
+            start_period: 60s
+
+    temporal:
+        image: temporalio/temporal:latest
+        container_name: temporal
+        ports:
+            - "7233:7233"
+            - "8233:8233"
+        volumes:
+            - temporal-data:/home/temporal
+        command: server start-dev --ip 0.0.0.0 --db-filename /home/temporal/temporal.db
+
+volumes:
+    temporal-data:
