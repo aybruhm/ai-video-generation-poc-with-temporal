@@ -17,6 +17,9 @@ class EnvSettings(BaseModel):
     JWT_KEY: str = os.getenv("JWT_KEY", "")
     JWT_EXP: int = int(os.getenv("JWT_EXP", "900"))
     JWT_ALGORITHM: str = os.getenv("JWT_ALGORITHM", "HS256")
+    
+    # AI Provider Settings
+    FALAI_API_KEY: str = os.getenv("FALAI_API_KEY", "")
 
 
 env = EnvSettings()
