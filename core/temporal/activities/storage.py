@@ -6,7 +6,7 @@ from temporalio import activity
 
 from core.generations.service import GenerationService, GenerationUpdateDTO
 from dbs.inmemory.generations.dao import GenerationDAO
-from temporal.types import SaveResultDTO, UploadToS3DTO
+from core.temporal.types import SaveResultDTO, UploadToS3DTO
 
 # Initialize DAOs
 generation_dao = GenerationDAO()

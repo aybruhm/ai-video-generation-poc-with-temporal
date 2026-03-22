@@ -1,4 +1,4 @@
-from temporal.types import GenerateVideoDTO
+from core.temporal.types import GenerateVideoDTO
 
 import fal_client
 from temporalio import activity
