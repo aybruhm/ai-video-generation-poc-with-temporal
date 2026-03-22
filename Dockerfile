@@ -13,6 +13,7 @@ RUN apt-get update \
     python3-dev \
     libpq-dev \
     gcc \
+    sqlite3 \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
