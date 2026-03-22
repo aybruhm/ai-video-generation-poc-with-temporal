@@ -4,15 +4,9 @@ from uuid import UUID
 import httpx
 from temporalio import activity
 
-from core.generations.service import GenerationService, GenerationUpdateDTO
-from dbs.inmemory.generations.dao import GenerationDAO
+from core.generations.dtos import GenerationUpdateDTO
 from core.temporal.types import SaveResultDTO, UploadToS3DTO
-
-# Initialize DAOs
-generation_dao = GenerationDAO()
-
-# Initialize services
-generation_service = GenerationService(dao=generation_dao)
+from dbs.inmemory.generations.dao import GenerationDAO
 
 
 @activity.defn
@@ -38,7 +32,9 @@ async def upload_to_s3(input: UploadToS3DTO) -> str:
 @activity.defn
 async def save_generation_result(input: SaveResultDTO) -> None:
     """Persists final generation state to the DB."""
+    from core.generations.service import GenerationService
 
+    generation_service = GenerationService(dao=GenerationDAO())
     await generation_service.update_generation(
         generation_id=UUID(input.generation_id),
         update_dto=GenerationUpdateDTO(
