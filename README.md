@@ -192,3 +192,10 @@ INFO:temporalio.activity:Deducted 20 tokens from user 45dd048f-71d3-4433-ae29-e0
 INFO:temporalio.activity:Saved result for 8798d9cb-1f82-4aef-a770-20200587a57e
 INFO:temporalio.workflow:VideoGenerationWorkflow completed for 8798d9cb-1f82-4aef-a770-20200587a57e
 ```
+
+
+### 5. Stop the application
+
+```bash
+make stop
+```
