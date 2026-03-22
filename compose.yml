@@ -47,7 +47,7 @@ services:
             context: .
             dockerfile: Dockerfile
         container_name: video_generation_poc_worker
-        command: python -c "import asyncio; from core.temporal.worker import run_worker; asyncio.run(run_worker())"
+        command: python -m core.temporal.worker
         volumes:
             - ./:/app
         env_file:
@@ -56,18 +56,6 @@ services:
             - TEMPORAL_TARGET_HOST=temporal:7233
         depends_on:
             - temporal
-        healthcheck:
-            test:
-                [
-                    "CMD",
-                    "python",
-                    "-c",
-                    "import asyncio; from core.temporal.worker import test_worker_connection; asyncio.run(test_worker_connection())",
-                ]
-            interval: 30s
-            timeout: 10s
-            retries: 3
-            start_period: 60s
 
     temporal:
         image: temporalio/temporal:latest
