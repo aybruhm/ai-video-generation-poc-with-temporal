@@ -12,3 +12,16 @@ class GenerationDTO(BaseModel):
 class GenerationUpdateDTO(BaseModel):
     status: str
     output_url: str | None = None
+
+
+class StartGenerationRequestDTO(BaseModel):
+    prompt: str
+    model: str
+    duration: int = 5
+    aspect_ratio: str = "16:9"
+    token_cost: int
+
+
+class StartGenerationResponseDTO(BaseModel):
+    generation_id: str
+    handle_id: str
