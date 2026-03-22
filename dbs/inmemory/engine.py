@@ -1,6 +1,7 @@
 import logging
 from contextlib import asynccontextmanager
 
+from sqlalchemy import text
 from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine
 
 from utils.env_utils import env
@@ -58,6 +59,13 @@ async def get_db_session():
     finally:
         if session:
             await session.close()
+
+
+async def test_connection():
+    """Test the database connection by executing a simple query."""
+    async with engine.begin() as conn:
+        await conn.execute(text("SELECT 1"))
+    logger.info("Database connection tested successfully")
 
 
 async def cleanup_connections():
