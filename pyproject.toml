@@ -1,7 +1,16 @@
 [project]
-name = "video-generation-poc-with-temporal"
+name = "ai-video-generation-poc-with-temporal"
 version = "0.1.0"
-description = "Proof of concept for orchestrating an AI video generation pipeline (AI Provider → S3 → token deduction → DB) using Temporal workflows and activities with FastAPI."
+description = "Proof of concept for orchestrating an AI video generation pipeline (video generation → S3 → token deduction → DB) using Temporal workflows and activities with FastAPI."
 readme = "README.md"
 requires-python = ">=3.13"
-dependencies = []
+dependencies = [
+    "aiosqlite>=0.22.1",
+    "alembic>=1.18.4",
+    "fal-client>=0.13.1",
+    "fastapi>=0.135.1",
+    "pydantic>=2.12.5",
+    "sqlalchemy>=2.0.48",
+    "temporalio>=1.23.0",
+    "uvicorn>=0.42.0",
+]
