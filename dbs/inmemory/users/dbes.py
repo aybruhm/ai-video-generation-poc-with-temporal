@@ -10,6 +10,7 @@ class UserDBE(Base):
 
     id = Column(UUID, primary_key=True, default=uuid4)
     username = Column(String)
+    password = Column(String)
     token_balance = Column(Integer, default=300)
     created_at = Column(DateTime, default=func.now())
     updated_at = Column(DateTime, default=func.now(), onupdate=func.now())
