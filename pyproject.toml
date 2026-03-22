@@ -5,6 +5,7 @@ description = "Proof of concept for orchestrating an AI video generation pipelin
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
+    "aiohttp>=3.13.3",
     "aiosqlite>=0.22.1",
     "alembic>=1.18.4",
     "bcrypt>=5.0.0",
