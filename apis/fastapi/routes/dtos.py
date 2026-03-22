@@ -1,7 +1,7 @@
 import uuid
 from datetime import datetime
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
 
 from core.generations.dtos import StartGenerationRequestDTO
 from core.users.dtos import LoginUserDTO, RegisterUserDTO

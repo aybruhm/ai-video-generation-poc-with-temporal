@@ -5,7 +5,7 @@ class GenerateVideoDTO(BaseModel):
     generation_id: str
     prompt: str
     model: str
-    duration: int
+    duration: str | int
     aspect_ratio: str
 
 
@@ -32,6 +32,6 @@ class VideoGenerationWorkflowDTO(BaseModel):
     generation_id: str
     prompt: str
     model: str
-    duration: int
+    duration: str | int
     aspect_ratio: str
     token_cost: int

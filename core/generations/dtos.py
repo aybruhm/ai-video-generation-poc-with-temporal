@@ -17,7 +17,7 @@ class GenerationUpdateDTO(BaseModel):
 class StartGenerationRequestDTO(BaseModel):
     prompt: str
     model: str
-    duration: int = 5
+    duration: str | int
     aspect_ratio: str = "16:9"
     token_cost: int
 

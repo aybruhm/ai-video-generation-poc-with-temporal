@@ -21,7 +21,6 @@ from utils.jwt import (
 
 from .dtos import (
     CredentialsDTO,
-    JWTTokensDTO,
     LoginUserRequestDTO,
     RegisterUserRequestDTO,
     UserResponse,
