@@ -26,7 +26,7 @@ async def create_generation():
             "token_cost": 20,
         }
         async with session.post(
-            "generations",
+            "generations/",
             json=payload,
         ) as response:
             try:
