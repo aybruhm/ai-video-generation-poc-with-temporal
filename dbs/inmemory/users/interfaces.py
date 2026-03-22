@@ -14,5 +14,9 @@ class UserDAOInterface(ABC):
         raise NotImplementedError
 
     @abstractmethod
+    async def get_by_username(self, username: str) -> UserDBE | None:
+        raise NotImplementedError
+
+    @abstractmethod
     async def update(self, user_id: UUID, values_to_update: dict) -> UserDBE | None:
         raise NotImplementedError

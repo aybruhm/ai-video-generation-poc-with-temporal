@@ -23,6 +23,13 @@ class UserDAO(UserDAOInterface):
             user_dbe = result.scalar_one_or_none()
             return user_dbe
 
+    async def get_by_username(self, username: str) -> UserDBE | None:
+        async with get_db_session() as session:
+            stmt = select(UserDBE).where(UserDBE.username == username)
+            result = await session.execute(stmt)
+            user_dbe = result.scalar_one_or_none()
+            return user_dbe
+
     async def update(
         self,
         user_id: UUID,
