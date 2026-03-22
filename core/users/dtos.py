@@ -1,6 +1,7 @@
 from uuid import UUID
+from datetime import datetime
 
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, Field
 
 
 class UserCreateDTO(BaseModel):
@@ -18,3 +19,14 @@ class UserDTO(BaseModel):
     id: UUID
     username: str
     token_balance: int
+    created_at: datetime
+
+
+class RegisterUserDTO(BaseModel):
+    username: str = Field(..., min_length=1, max_length=255)
+    password: str
+
+
+class LoginUserDTO(BaseModel):
+    username: str = Field(..., min_length=1, max_length=255)
+    password: str
