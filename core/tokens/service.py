@@ -1,7 +1,7 @@
 from uuid import UUID
 
 from core.tokens.dtos import TokenUsageCreateDTO, TokenUsageDTO
-from dbs.inmemory.tokens.interfaces import TokenUsageDAOInterface, TokenUsageDBE
+from core.tokens.interfaces import TokenUsageDAOInterface, TokenUsageDBE
 
 
 class TokenService:

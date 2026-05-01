@@ -11,7 +11,7 @@ from core.temporal.workflows.video_generation import (
     VideoGenerationWorkflowDTO,
 )
 from dbs.inmemory.generations.dbes import GenerationDBE
-from dbs.inmemory.generations.interfaces import GenerationDAOInterface
+from core.generations.interfaces import GenerationDAOInterface
 from services.dependencies import get_temporal_client
 from utils.env_utils import env
 

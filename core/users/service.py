@@ -1,7 +1,7 @@
 from uuid import UUID
 
 from core.users.dtos import UserDTO, UserUpdateDTO
-from dbs.inmemory.users.interfaces import UserDAOInterface, UserDBE
+from core.users.interfaces import UserDAOInterface, UserDBE
 
 
 class UserService:

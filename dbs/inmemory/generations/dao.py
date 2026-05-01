@@ -5,7 +5,7 @@ from sqlalchemy import select
 
 from dbs.inmemory.engine import get_db_session
 from dbs.inmemory.generations.dbes import GenerationDBE
-from dbs.inmemory.generations.interfaces import GenerationDAOInterface
+from core.generations.interfaces import GenerationDAOInterface
 
 
 class GenerationDAO(GenerationDAOInterface):

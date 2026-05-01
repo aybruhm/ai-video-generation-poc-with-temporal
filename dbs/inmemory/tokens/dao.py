@@ -4,7 +4,7 @@ from sqlalchemy import select
 
 from dbs.inmemory.engine import get_db_session
 from dbs.inmemory.tokens.dbes import TokenUsageDBE
-from dbs.inmemory.tokens.interfaces import TokenUsageDAOInterface
+from core.tokens.interfaces import TokenUsageDAOInterface
 
 
 class TokenUsageDAO(TokenUsageDAOInterface):

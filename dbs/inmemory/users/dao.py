@@ -5,7 +5,7 @@ from sqlalchemy import select
 
 from dbs.inmemory.engine import get_db_session
 from dbs.inmemory.users.dbes import UserDBE
-from dbs.inmemory.users.interfaces import UserDAOInterface
+from core.users.interfaces import UserDAOInterface
 
 
 class UserDAO(UserDAOInterface):
