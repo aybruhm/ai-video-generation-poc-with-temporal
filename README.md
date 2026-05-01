@@ -42,6 +42,7 @@ This POC is my redemption: what I would have built instead. It was designed with
 │   ├── generations
 │   │   ├── __init__.py
 │   │   ├── dtos.py
+│   │   ├── interfaces.py
 │   │   └── service.py
 │   ├── temporal
 │   │   ├── __init__.py
@@ -58,11 +59,13 @@ This POC is my redemption: what I would have built instead. It was designed with
 │   ├── tokens
 │   │   ├── __init__.py
 │   │   ├── dtos.py
+│   │   ├── interfaces.py
 │   │   └── service.py
 │   └── users
 │       ├── __init__.py
 │       ├── auth.py
 │       ├── dtos.py
+│       ├── interfaces.py
 │       └── service.py
 ├── dbs
 │   └── inmemory
@@ -72,18 +75,15 @@ This POC is my redemption: what I would have built instead. It was designed with
 │       ├── generations
 │       │   ├── __init__.py
 │       │   ├── dao.py
-│       │   ├── dbes.py
-│       │   └── interfaces.py
+│       │   └── dbes.py
 │       ├── tokens
 │       │   ├── __init__.py
 │       │   ├── dao.py
-│       │   ├── dbes.py
-│       │   └── interfaces.py
+│       │   └── dbes.py
 │       └── users
 │           ├── __init__.py
 │           ├── dao.py
-│           ├── dbes.py
-│           └── interfaces.py
+│           └── dbes.py
 ├── main.py
 ├── makefile
 ├── middlewares
